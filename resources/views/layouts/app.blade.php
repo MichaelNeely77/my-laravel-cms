@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -75,7 +75,12 @@
         </nav>
 
         <main class="py-4">
+            @if(session()->has('success'))
+                <div class= "alert alert-succcess">
 
+                    {{session()->get('success') }}
+                </div>
+                @endif
             @auth
             <div class="container">
                     <div class="row">
