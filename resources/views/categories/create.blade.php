@@ -15,24 +15,20 @@
                         <li class="list-group-item text-danger">
                             {{ $error }}
                         </li>
-
-
-
                     @endforeach
-
                 </ul>
             </div>
         @endif
-        <form action ="{{ route('categories.store') }}" method="POST">
+        <form action="{{ route('categories.store') }}" method="POST">
         @csrf
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name">
             </div>
             <div class="form-group">
-                <a href="" class="btn btn-success">
+                <button class="btn btn-success">
                     Add Category
-                </a>
+                </button>
 
             </div>
         </form>

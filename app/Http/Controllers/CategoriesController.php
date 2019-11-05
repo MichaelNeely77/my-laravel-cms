@@ -42,14 +42,18 @@ class CategoriesController extends Controller
             'name' => 'required|unique:categories'
         ]);
 
-        $ncategory = new Caetegory();
 
         Category::create([
+
             'name' => $request->name
 
         ]);
 
-        session()->flash('success', 'Category created');
+        $ncategory = new Category();
+
+
+
+        session()->flash('success', 'Category created successfully');
 
         return redirect(route('categories.index'));
     }
