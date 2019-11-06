@@ -7,6 +7,8 @@ use App\Category;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\CreateCategoryRequest;
+
 class CategoriesController extends Controller
 {
     /**
@@ -35,22 +37,14 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-        $this->validate($request, [
-
-            'name' => 'required|unique:categories'
-        ]);
-
 
         Category::create([
 
             'name' => $request->name
 
         ]);
-
-        $ncategory = new Category();
-
 
 
         session()->flash('success', 'Category created successfully');
