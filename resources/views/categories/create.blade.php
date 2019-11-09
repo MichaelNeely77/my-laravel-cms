@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-success">
-                    Add Category
+                    {{ isset($category) ? 'Update Category' : 'Add Category' }}
                 </button>
 
             </div>
