@@ -12,12 +12,15 @@
             <thead>
                 <th>Image</th>
                 <th>Title</th>
+                <th></th>
             </thead>
             <tbody>
                 @foreach ($posts as $post)
                 <tr>
-                    <td><img src="{{ $post->image }}" alt=""></td>
+                    <td><img src="{{ asset($post->image) }}" width="120" height="60px" alt=""></td>
                     <td>{{ $post->title }}</td>
+                    <td><a href="" class="btn btn-info btn-sm">Edit </a></td>
+                    <td><a href="" class="btn btn-danger btn-sm">Trash </a></td>
                 </tr>
                     
                 @endforeach
