@@ -11,29 +11,37 @@
         Categories
     </div>
     <div class="card-body">
+        @if($categories->count() > 0)
+
         <table class="table">
-            <thead>
-                <th>Name</th>
-                <th></th>
-                <tbody>
-                    @foreach($categories as $category)
-                    <tr>
-                        <td>
-                            {{ $category->name }}
-                        </td>
-                        <td>
-                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm">
-                                Edit    
-                            </a>  
-                            <button class="btn-danger btn-sm" onClick="handleDelete({{ $category->id }})">Delete</button>                
-                        </td>
-                    </tr>
+                <thead>
+                    <th>Name</th>
+                    <th></th>
+                    <tbody>
+                        @foreach($categories as $category)
+                        <tr>
+                            <td>
+                                {{ $category->name }}
+                            </td>
+                            <td>
+                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm">
+                                    Edit    
+                                </a>  
+                                <button class="btn-danger btn-sm" onClick="handleDelete({{ $category->id }})">Delete</button>                
+                            </td>
+                        </tr>
+    
+                        @endforeach
+    
+                    </tbody>
+                </thead>
+            </table>
 
-                    @endforeach
+        @else
 
-                </tbody>
-            </thead>
-        </table>
+        <h3 class="text-center">No Categories yet</h3>
+
+        @endif
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <form action="" method="POST" id="deleteCategoryForm">

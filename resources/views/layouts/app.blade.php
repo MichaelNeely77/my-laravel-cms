@@ -86,14 +86,19 @@
                     @endif
                     <div class="row">
                             <div class="col-md-4">
-                                <div class="list-group">
+                                <ul class="list-group">
                                     <div class="list-group-item">
                                         <a href="{{ route('posts.index') }}">Posts</a>
                                     </div>
                                     <div class="list-group-item">
-                                            <a href="{{ route('categories.index') }}">Categories</a>
-                                        </div>
-                                </div>
+                                        <a href="{{ route('categories.index') }}">Categories</a>
+                                    </div>
+                                </ul>
+                                <ul class="list-group mt-5">
+                                    <div class="list-group-item">
+                                        <a href="{{ route('trashed-posts.index') }}">Trashed Posts</a>
+                                    </div>
+                                </ul>
                                 
                             </div>
                             <div class="col-md-8">
