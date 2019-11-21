@@ -27,7 +27,7 @@
                                 <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm">
                                     Edit    
                                 </a>  
-                                <button class="btn-danger btn-sm" onClick="handleDelete({{ $category->id }})">Delete</button>                
+                                <button class="btn btn-danger btn-sm" onClick="handleDelete({{ $category->id }})">Delete</button>                
                             </td>
                         </tr>
     
