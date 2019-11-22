@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Posts\CreatePostRequest;
 
+
 use App\Post;
 use App\Category;
 use Illuminate\Support\Facades\Storage;
