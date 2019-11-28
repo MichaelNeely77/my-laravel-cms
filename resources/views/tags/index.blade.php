@@ -20,7 +20,7 @@
                     <th></th>
                 </thead>
                     <tbody>
-                        @foreach($tags as $Tag)
+                        @foreach($tags as $tag)
                         <tr>
                             <td>
                                 {{ $tag->name }}
