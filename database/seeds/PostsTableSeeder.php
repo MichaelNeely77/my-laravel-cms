@@ -72,7 +72,7 @@ class PostsTableSeeder extends Seeder
         ]);
 
         $tag3 =  Tag::create([
-            'name' => 'Record'
+            'name' => 'Management'
         ]);
 
         $post1->tags()->attach([$tag1->id, $tag2->id]);
