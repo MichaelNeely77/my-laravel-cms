@@ -2,144 +2,126 @@
 
 @section('title')
 
-{{ $post->title}}
+{{ $post->title }}
 
 @endsection
 
 @section('header')
-    <!-- Header -->
-    <header class="header text-center text-white" style="background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);">
-        <div class="container">
-  
-          <div class="row">
-            <div class="col-md-8 mx-auto">
-  
-              <h1>Latest Blog Posts</h1>
-              <p class="lead-2 opacity-90 mt-6">Read and get updated on how we progress</p>
-  
-            </div>
-          </div>
-  
-        </div>
-      </header><!-- /.header -->
+<!-- Header -->
+<header class="header text-white h-fullscreen pb-80" style="background-image: url(../assets/img/thumb/5.jpg);" data-overlay="9">
+  <div class="container text-center">
+
+    <div class="row h-100">
+      <div class="col-lg-8 mx-auto align-self-center">
+
+        <p class="opacity-70 text-uppercase small ls-1">
+          {{ $post->category->name }}
+        </p>
+        <h1 class="display-4 mt-7 mb-8">{{ $post->title }}</h1>
+        <p><span class="opacity-70 mr-1">By</span> <a class="text-white" href="#">{{ $post->user->name }}</a></p>
+      <p><img class="avatar avatar-sm" src="{{ Gravatar::src($post->user->email) }}" alt="..."></p>
+
+      </div>
+
+      <div class="col-12 align-self-end text-center">
+        <a class="scroll-down-1 scroll-down-white" href="#section-content"><span></span></a>
+      </div>
+
+    </div>
+
+  </div>
+</header><!-- /.header -->
 
 @endsection
 
 @section('content')
 
 <!-- Main Content -->
+<!-- Main Content -->
 <main class="main-content">
-    <div class="section bg-gray">
-      <div class="container">
-        <div class="row">
-  
-  
-          <div class="col-md-8 col-xl-9">
-            <div class="row gap-y">
-  
-              @foreach ($posts as $post)
-  
-              <div class="col-md-6">
-                  <div class="card border hover-shadow-6 mb-6 d-block">
-                    <a href="#"><img class="card-img-top" src="{{ asset('storage/'. $post->image) }}" alt="Card image cap"></a>
-                    <div class="p-6 text-center">
-                      <p>
-                        <a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">
-                        {{ $post->category->name }}
-                      </a>
-                    </p>
-                      <h5 class="mb-0">
-                        <a class="text-dark" href="#">
-                          {{ $post->title }}
-                        </a>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                  
-              @endforeach
-  
-            </div>
-  
-  
-            <nav class="flexbox mt-30">
-              <a class="btn btn-white disabled"><i class="ti-arrow-left fs-9 mr-4"></i> Newer</a>
-              <a class="btn btn-white" href="#">Older <i class="ti-arrow-right fs-9 ml-4"></i></a>
-            </nav>
+
+
+  <!--
+  |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+  | Blog content
+  |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+  !-->
+  <div class="section" id="section-content">
+    <div class="container">
+
+
+      <div class="text-center my-6">
+        <img class="rounded-md" src="../assets/img/bg/11.jpg" alt="...">
+      </div>
+
+      {!! $post->content !!}
+
+      <div class="row">
+
+          <div class="gap-xy-2 mt-6">
+            @foreach ($post->tags as $tag)
+            <a class="badge badge-pill badge-secondary" href="#">{{ $tag->name}}</a>
+            @endforeach
+           
+
           </div>
-  
-  
-  
-          <div class="col-md-4 col-xl-3">
-            <div class="sidebar px-4 py-md-0">
-  
-              <h6 class="sidebar-title">Search</h6>
-              <form class="input-group" target="#" method="GET">
-                <input type="text" class="form-control" name="s" placeholder="Search">
-                <div class="input-group-addon">
-                  <span class="input-group-text"><i class="ti-search"></i></span>
-                </div>
-              </form>
-  
-              <hr>
-  
-              <h6 class="sidebar-title">Categories</h6>
-              <div class="row link-color-default fs-14 lh-24">
-                
-                @foreach ($categories as $category)
-                  <div class="col-6">
-                    <a href="#">
-                      {{ $category->name }}
-                    </a>
-                  </div>
-                @endforeach
-              </div>
-  
-              <hr>
-  
-              {{-- <h6 class="sidebar-title">Top posts</h6>
-              <a class="media text-default align-items-center mb-5" href="blog-single.html">
-                <img class="rounded w-65px mr-4" src="../assets/img/thumb/4.jpg">
-                <p class="media-body small-2 lh-4 mb-0">Thank to Maryam for joining our team</p>
-              </a>
-  
-              <a class="media text-default align-items-center mb-5" href="blog-single.html">
-                <img class="rounded w-65px mr-4" src="../assets/img/thumb/3.jpg">
-                <p class="media-body small-2 lh-4 mb-0">Best practices for minimalist design</p>
-              </a>
-  
-              <a class="media text-default align-items-center mb-5" href="blog-single.html">
-                <img class="rounded w-65px mr-4" src="../assets/img/thumb/5.jpg">
-                <p class="media-body small-2 lh-4 mb-0">New published books for product designers</p>
-              </a>
-  
-              <a class="media text-default align-items-center mb-5" href="blog-single.html">
-                <img class="rounded w-65px mr-4" src="../assets/img/thumb/2.jpg">
-                <p class="media-body small-2 lh-4 mb-0">Top 5 brilliant content marketing strategies</p>
-              </a>
-  
-              <hr> --}}
-  
-              <h6 class="sidebar-title">Tags</h6>
-              <div class="gap-multiline-items-1">
-                @foreach ($tags as $tag)
-                <a class="badge badge-secondary" href="#">{{ $tag->name}}</a>
-                @endforeach
-                
-              </div>
-  
-              <hr>
-  
-              {{-- <h6 class="sidebar-title">About</h6>
-              <p class="small-3">TheSaaS is a responsive, professional, and multipurpose SaaS, Software, Startup and WebApp landing template powered by Bootstrap 4. TheSaaS is a powerful and super flexible tool for any kind of landing pages.</p> --}}
-  
-  
-            </div>
-          </div>
-  
+
         </div>
       </div>
+
+
     </div>
-  </main>
+  </div>
+
+
+
+  <!--
+  |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+  | Comments
+  |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+  !-->
+  <div class="section bg-gray">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+
+
+
+          <hr>
+
+          <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = "{{ config('app.url') }}/blog/posts/{{ $post->id }}";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "{{ $post->id }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://saas-blog-vznpof4bkh.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</main>
     
 @endsection
