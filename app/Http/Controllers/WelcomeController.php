@@ -12,10 +12,17 @@ class WelcomeController extends Controller
 {
     public function index () 
     {
+
+        $search = (request()->query('search'));
+        if($search) {
+            $posts = Post::where('title', 'LIKE', "%{search}%")->simplePaginate(3);
+        } else {
+            $posts= (request()->query('search'));
+        }
         return view('welcome')
             ->with('categories', Category::all())
             ->with('tags', Tag::all())
-            ->with('posts', Post::paginate(2));
+            ->with('posts',  $posts);
 
     }
 }
