@@ -15,9 +15,9 @@ class WelcomeController extends Controller
 
         $search = (request()->query('search'));
         if($search) {
-            $posts = Post::where('title', 'LIKE', "%{search}%")->simplePaginate(3);
+            $posts = Post::where('title', 'LIKE', "%{$search}%")->simplePaginate(3);
         } else {
-            $posts= (request()->query('search'));
+            $posts= Post::simplePaginate(3);
         }
         return view('welcome')
             ->with('categories', Category::all())
