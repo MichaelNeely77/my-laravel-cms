@@ -50,17 +50,17 @@
     <div class="container">
 
 
-      <div class="text-center my-6">
-        <img class="rounded-md" src="../assets/img/bg/11.jpg" alt="...">
-      </div>
+      <div class="addthis_inline_share_toolbox"></div>
 
       {!! $post->content !!}
+
+      
 
       <div class="row">
 
           <div class="gap-xy-2 mt-6">
             @foreach ($post->tags as $tag)
-            <a class="badge badge-pill badge-secondary" href="#">{{ $tag->name}}</a>
+            <a class="badge badge-pill badge-secondary" href="{{ route('blog.tag', $tag->id)}}">{{ $tag->name}}</a>
             @endforeach
            
 
